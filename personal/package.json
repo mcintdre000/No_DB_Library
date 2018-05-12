@@ -2,6 +2,8 @@
   "name": "personal",
   "version": "0.1.0",
   "private": true,
+  "main": "server/server.js",
+  "proxy": "http://localhost:9000/",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
@@ -17,9 +19,10 @@
     "eject": "react-scripts eject"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
-  "main": "index.js",
+  
   "devDependencies": {},
   "keywords": [],
   "author": "",
   "license": "ISC"
+  
 }
