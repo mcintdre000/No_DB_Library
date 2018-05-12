@@ -9,7 +9,7 @@ app.use( bodyParser.json() );
 
 app.get("/api/books", controller.read);
 app.post("/api/booksadded", controller.addBook);
-app.put("/api/booksedit/:id");
+app.put("/api/booksedit/:id", controller.updateBook);
 app.delete("/api/booksdelete/:id", controller.deleteBook);
 
 
