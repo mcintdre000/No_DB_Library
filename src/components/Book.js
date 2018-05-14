@@ -38,8 +38,9 @@ export default class Book extends Component{
        return(  <ul key={ this.props.index }>
                     <li>{ this.props.val.title }</li>
                     <li>- { this.props.val.author }</li>
-                    <li>{ this.props.val.pageCount }</li>
+                    {/* <li>{ this.props.val.pageCount }</li> */}
                     <img className="bookImg" src ={ this.props.val.cover }/>
+                    <li className="pages">{ this.props.val.pageCount }</li>
                     <br />
                     <ReadCheck update={ this.updateBookRead } readBookId={ this.props.val.id } bookBoolean={ this.props.val.read }/> {/*input checkbox placement*/}
                     <br />
@@ -50,7 +51,7 @@ export default class Book extends Component{
     render(){
     return(
        
-        <div>
+        <div className="displayBook">
             { this.displayBook() }
         </div>
         

@@ -18,6 +18,7 @@ class App extends Component {
         author: '',
         title: '',
         cover: '',
+        pageCount: null,
         read: true
       }
       
@@ -112,7 +113,7 @@ class App extends Component {
                     onChange={ event => this.authorHandler( event.target.value )}></input>
             <input  value={this.state.obj.cover} placeholder="Cover URL"
                     onChange={ event => this.coverHandler( event.target.value )}></input>
-            <button onClick={ this.addBook }> Add Book </button>
+            <button className="addBtn"onClick={ this.addBook }> Add Book </button>
           <div className="Books">
             { displayBooks }
           </div>

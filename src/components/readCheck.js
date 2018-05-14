@@ -6,7 +6,7 @@ export default function ReadCheck(props) {
     return(
         <div>
         <label >Read:</label>
-        <input type="checkBox" checked={props.bookBoolean ? false : true} onClick={e => props.update(props.readBookId)}></input>
+        <input className="checkInput" type="checkBox" checked={props.bookBoolean ? false : true} onChange={e => props.update(props.readBookId)}></input>
         </div>
         
     )
