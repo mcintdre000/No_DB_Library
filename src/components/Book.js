@@ -3,23 +3,31 @@ import DeleteItem from './deleteItem';
 import ReadCheck from './readCheck';
 import axios from 'axios';
 
-
+//////////////////////////////////////////////////////// THIS COMPONENT IS BEING RENDERED IN THE *APP* COMPONENT
 export default class Book extends Component{
-    constructor(){
-        super();
-    
+    constructor(props){
+        super(props);
+        console.log(this.props)
+        this.state = {
+            read: this.props.readBook
+        }
+
         this.deleteBook = this.deleteBook.bind( this );
+        this.updateBookRead = this.updateBookRead.bind( this );
     }
     // Props passing on component render test
-    // conponentDidMount(){
+    // componentDidMount(){
     //     console.log('props',this.props)
     // }
     // updateaxios test
-    // updateBookRead() {
-    //     axios.put( `/api/booksedit/${id}`, ).then ()
-    // }
+    updateBookRead( id ) {
+        axios.put( `/api/booksedit/${id}` ).then( res => {
+            this.props.readBook( res.data )
+            // console.log( '-----', res.data )
+        }).catch( err => console.log( err ) );
+    }
 
-    deleteBook(id) {
+    deleteBook( id ) {
         axios.delete( `/api/booksdelete/${id}` ).then( res => {
             this.props.updateBooks( res.data )
         }).catch( err => console.log( err ) );
@@ -31,8 +39,8 @@ export default class Book extends Component{
                     <li>{ this.props.val.title }</li>
                     <li>- { this.props.val.author }</li>
                     <img src ={ this.props.val.cover }/>
-                    {/* <br /> */}
-                    {/* <ReadCheck update={ this. }/> */} {/*input checkbox placement*/}
+                    <br />
+                    <ReadCheck update={ this.updateBookRead } readBookId={ this.props.val.id } bookBoolean={ this.props.val.read }/> {/*input checkbox placement*/}
                     <br />
                     <DeleteItem delete={ this.deleteBook } bookId={ this.props.val.id }/>
                 </ul>)

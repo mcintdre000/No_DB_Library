@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import DeleteItem from '../src/components/deleteItem';
 import Book from './components/Book';
+import Header from './components/header/header';
 
 class App extends Component {
   constructor() {
@@ -72,27 +73,47 @@ class App extends Component {
     });
   }
 
+  readBook = (val) => {
+    this.setState({
+      books: val
+    });
+  }
+  
+
+  // clearInputs() {
+  //   this.setState({
+  //     title: '',
+  //     author: '',
+  //     cover: ''
+  //   });
+  // }
+
   render() {
 
     let displayBooks = this.state.books.map(( e, i ) => {
       
       return (
         <div key={ i }>
-        <Book val={ e } index={ i } updateBooks={ this.updateBooks }/>
+        <Book val={ e } index={ i } updateBooks={ this.updateBooks} readBook={this.readBook}/>
         </div>
         )
     });
 
     return (
       <div className="App">
-        <input  placeholder="Title" 
-                onChange={event => this.titleHandler( event.target.value )}></input>
-        <input  placeholder="Author" 
-                onChange={ event => this.authorHandler( event.target.value )}></input>
-        <input placeholder="Cover URL"
-               onChange={ event => this.coverHandler( event.target.value )}></input>
-        <button onClick={ this.addBook }> Add Book </button>
-        { displayBooks }
+        <Header />
+        <div>
+          <div className="Books Inputs">
+            <input  placeholder="Title" 
+                    onChange={event => this.titleHandler( event.target.value )}></input>
+            <input  placeholder="Author" 
+                    onChange={ event => this.authorHandler( event.target.value )}></input>
+            <input placeholder="Cover URL"
+                  onChange={ event => this.coverHandler( event.target.value )}></input>
+            <button onClick={ this.addBook }> Add Book </button>
+            { displayBooks }
+          </div>
+        </div>
       </div>
     );
   }

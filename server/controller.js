@@ -92,7 +92,7 @@ module.exports = {
 
     updateBook(req, res) {
         const {id} = req.params
-        editIndex = books.findIndex(e => e.id == id);
+        const editIndex = books.findIndex(e => e.id == id);
         books[editIndex].read = !books[editIndex].read;
         res.status(200).json( books );
     },

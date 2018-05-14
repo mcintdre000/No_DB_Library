@@ -1,8 +1,12 @@
 import React from "react";
 
-export default function ReadCheck() {
+export default function ReadCheck(props) {
+    // console.log("-----",props)
     return(
-        <div></div>
-        // <input type="checkBox" onClick={e => props.}></input>
+        <div>
+        <label >Read:</label>
+        <input type="checkBox" onClick={e => props.update(props.readBookId)}></input>
+        </div>
+        
     )
 }
