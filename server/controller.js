@@ -1,4 +1,4 @@
-const axios=require('axios');
+const axios=require( 'axios' );
 let books = [
     {
         id: 1,
@@ -84,11 +84,11 @@ let books = [
 ];
 
 module.exports = {
-    addBook(req, res) {
+    addBook( req, res ) {
         const { id, author, title, cover, pageCount, read } = req.body
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}&key=AIzaSyB2biiRz7f0v2zRZimtTAAhBN9LGTp6TzU`).then(e=> {
+        axios.get( `https://www.googleapis.com/books/v1/volumes?q=${title}&key=AIzaSyB2biiRz7f0v2zRZimtTAAhBN9LGTp6TzU` ).then( e=> {
             const pageCount= e.data.items[0].volumeInfo.pageCount
-            books.push({
+            books.push( {
                 id: books.length + 1,
                 author: author,
                 title: title,
@@ -96,28 +96,28 @@ module.exports = {
                 read: read,
                 pageCount: pageCount + ' pages'
             });
-            res.status(200).json( books )
+            res.status( 200 ).json( books )
         })
         
 
     },
 
     read(req, res) {
-        res.status(200).json( books );
+        res.status( 200 ).json( books );
     },
 
-    updateBook(req, res) {
-        const {id} = req.params
-        const editIndex = books.findIndex(e => e.id == id);
+    updateBook( req, res ) {
+        const { id } = req.params
+        const editIndex = books.findIndex( e => e.id == id );
         books[editIndex].read = !books[editIndex].read;
-        res.status(200).json( books );
+        res.status( 200 ).json( books );
     },
 
-    deleteBook(req, res) {
+    deleteBook( req, res ) {
         const deleteID = req.params.id;
-        bookIndex = books.findIndex(e => e.id == deleteID );
-        books.splice(bookIndex,1);
-        res.status(200).json( books );
+        bookIndex = books.findIndex( e => e.id == deleteID );
+        books.splice( bookIndex, 1 );
+        res.status( 200 ).json( books );
     }
 
     

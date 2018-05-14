@@ -10,7 +10,7 @@ export default class Header extends Component {
 
                     {/* Displays site logo and title */}
                     <div className="Header_left">
-                        <img className="Logo" src={Logo} alt="Book Logo"/>
+                        <img className="Logo" src={ Logo } alt="Book Logo"/>
                         <h1> The Book Grind </h1>
                     </div>
 

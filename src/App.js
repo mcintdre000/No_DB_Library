@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import DeleteItem from '../src/components/deleteItem';
 import Book from './components/Book';
 import Header from './components/header/header';
 
@@ -37,7 +36,7 @@ class App extends Component {
 
   addBook = ()=> {
     let newBook= this.state.obj
-    axios.post("/api/booksadded", newBook).then( res => {
+    axios.post( "/api/booksadded", newBook ).then( res => {
       this.setState({
         books: res.data
       });
@@ -75,7 +74,7 @@ class App extends Component {
     });
   }
 
-  readBook = (val) => {
+  readBook = ( val ) => {
     this.setState({
       books: val
     });
@@ -83,7 +82,7 @@ class App extends Component {
   
 
   clearInputs() {
-    let obj= {...this.state.obj}
+    let obj= { ...this.state.obj }
     obj.title= '';
     obj.author='';
     obj.cover='';
@@ -98,7 +97,7 @@ class App extends Component {
       
       return (
         <div key={ i }>
-        <Book val={ e } index={ i } updateBooks={ this.updateBooks} readBook={this.readBook}/>
+        <Book val={ e } index={ i } updateBooks={ this.updateBooks } readBook={ this.readBook }/>
         </div>
         )
     });
@@ -107,11 +106,11 @@ class App extends Component {
       <div className="App">
         <Header />
         <div>
-            <input  value={this.state.obj.title} placeholder="Title" 
-                    onChange={event => this.titleHandler( event.target.value )}></input>
-            <input  value={this.state.obj.author} placeholder="Author" 
+            <input  value={ this.state.obj.title } placeholder="Title" 
+                    onChange={ event => this.titleHandler( event.target.value )}></input>
+            <input  value={ this.state.obj.author } placeholder="Author" 
                     onChange={ event => this.authorHandler( event.target.value )}></input>
-            <input  value={this.state.obj.cover} placeholder="Cover URL"
+            <input  value={ this.state.obj.cover } placeholder="Cover URL"
                     onChange={ event => this.coverHandler( event.target.value )}></input>
             <button className="addBtn"onClick={ this.addBook }> Add Book </button>
           <div className="Books">

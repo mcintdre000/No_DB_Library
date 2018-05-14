@@ -5,9 +5,9 @@ import axios from 'axios';
 
 //////////////////////////////////////////////////////// THIS COMPONENT IS BEING RENDERED IN THE *APP* COMPONENT
 export default class Book extends Component{
-    constructor(props){
-        super(props);
-        console.log(this.props)
+    constructor( props ){
+        super( props );
+        
         this.state = {
             read: this.props.readBook
         }
@@ -38,8 +38,7 @@ export default class Book extends Component{
        return(  <ul key={ this.props.index }>
                     <li>{ this.props.val.title }</li>
                     <li>- { this.props.val.author }</li>
-                    {/* <li>{ this.props.val.pageCount }</li> */}
-                    <img className="bookImg" src ={ this.props.val.cover }/>
+                    <img className="bookImg" src ={ this.props.val.cover } alt="Book Cover"/>
                     <li className="pages">{ this.props.val.pageCount }</li>
                     <br />
                     <ReadCheck update={ this.updateBookRead } readBookId={ this.props.val.id } bookBoolean={ this.props.val.read }/> {/*input checkbox placement*/}
