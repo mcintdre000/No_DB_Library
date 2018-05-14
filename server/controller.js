@@ -84,6 +84,7 @@ module.exports = {
                 author: author,
                 title: title,
                 cover: cover,
+                read: read,
                 pageCount: pageCount
             });
             res.status(200).json( books )

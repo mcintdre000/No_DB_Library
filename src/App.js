@@ -106,14 +106,14 @@ class App extends Component {
       <div className="App">
         <Header />
         <div>
-        <input  value={this.state.obj.title} placeholder="Title" 
+            <input  value={this.state.obj.title} placeholder="Title" 
                     onChange={event => this.titleHandler( event.target.value )}></input>
             <input  value={this.state.obj.author} placeholder="Author" 
                     onChange={ event => this.authorHandler( event.target.value )}></input>
             <input  value={this.state.obj.cover} placeholder="Cover URL"
-                  onChange={ event => this.coverHandler( event.target.value )}></input>
+                    onChange={ event => this.coverHandler( event.target.value )}></input>
             <button onClick={ this.addBook }> Add Book </button>
-          <div className="Books Inputs">
+          <div className="Books">
             { displayBooks }
           </div>
         </div>
