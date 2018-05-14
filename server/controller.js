@@ -1,3 +1,4 @@
+const axios=require('axios');
 let books = [
     {
         id: 1,
@@ -76,13 +77,18 @@ let books = [
 module.exports = {
     addBook(req, res) {
         const { id, author, title, cover } = req.body
-        books.push({
-            id: books.length + 1,
-            author: author,
-            title: title,
-            cover: cover
-        });
-        res.status(200).json( books )
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}&key=AIzaSyB2biiRz7f0v2zRZimtTAAhBN9LGTp6TzU`).then(e=> {
+            const pageCount= e.data.items[0].volumeInfo.pageCount
+            books.push({
+                id: books.length + 1,
+                author: author,
+                title: title,
+                cover: cover,
+                pageCount: pageCount
+            });
+            res.status(200).json( books )
+        })
+        
 
     },
 

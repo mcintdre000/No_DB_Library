@@ -40,6 +40,7 @@ class App extends Component {
       this.setState({
         books: res.data
       });
+      this.clearInputs();
     }).catch( err => console.log( err ));
   }
 
@@ -80,13 +81,15 @@ class App extends Component {
   }
   
 
-  // clearInputs() {
-  //   this.setState({
-  //     title: '',
-  //     author: '',
-  //     cover: ''
-  //   });
-  // }
+  clearInputs() {
+    let obj= {...this.state.obj}
+    obj.title= '';
+    obj.author='';
+    obj.cover='';
+    this.setState({
+      obj: obj
+    });
+  }
 
   render() {
 
@@ -103,14 +106,14 @@ class App extends Component {
       <div className="App">
         <Header />
         <div>
-          <div className="Books Inputs">
-            <input  placeholder="Title" 
+        <input  value={this.state.obj.title} placeholder="Title" 
                     onChange={event => this.titleHandler( event.target.value )}></input>
-            <input  placeholder="Author" 
+            <input  value={this.state.obj.author} placeholder="Author" 
                     onChange={ event => this.authorHandler( event.target.value )}></input>
-            <input placeholder="Cover URL"
+            <input  value={this.state.obj.cover} placeholder="Cover URL"
                   onChange={ event => this.coverHandler( event.target.value )}></input>
             <button onClick={ this.addBook }> Add Book </button>
+          <div className="Books Inputs">
             { displayBooks }
           </div>
         </div>

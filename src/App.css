@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background: url('http://andreaoutloud.com/wp-content/uploads/2016/08/amazing-empty-bookshelf-background-pics-design-inspiration.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: saturate(.3);
 }
 
 .App-logo {
@@ -20,6 +24,21 @@
 
 .App-intro {
   font-size: large;
+}
+
+.Books {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.bookImg {
+  width: 200px;
+}
+
+li {
+  list-style: none;
 }
 
 @keyframes App-logo-spin {
